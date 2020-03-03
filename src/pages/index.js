@@ -10,7 +10,7 @@ const IndexPage = () => {
   //http://localhost:8080/ping
   const [itemData, setItemData] = useState(0)
   useEffect( () => {
-    fetch(`http://itemcheck.herokuapp.com/ping`)
+    fetch(`https://itemcheck.herokuapp.com/ping`)
     .then(response => response.json()) // parse JSON from request
     .then(resultData => {
       setItemData(resultData)
