@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
-//zingcharts, dygraph, or react-chartjs
+//zingcharts, dygraph, react-chartjs, highcharts, or chartist
+//sortable and shuffle js
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import Chart from "../components/chart"
+import ListItem from "../components/listitem"
 
 const IndexPage = () => {
-  //http://localhost:8080/ping
+  //https://localhost:8080/ping
   const [itemData, setItemData] = useState(0)
   useEffect( () => {
     fetch(`https://itemcheck.herokuapp.com/ping`)
@@ -16,67 +18,49 @@ const IndexPage = () => {
     .then(resultData => {
       setItemData(resultData)
     })
-  }, [])
+  }, []) 
   
   return (
     <Layout>
       <SEO title="Home" />
+      <div className="chartRoot">
+        <div className="chartContainer">
+          <Chart className="chart" />
+        </div>
+        <div className="chartItemListContainer">
+          <ul>
+            {Object.values(itemData).map(itemObject => {
+              var imgSrc = "https://ddragon.leagueoflegends.com/cdn/10.5.1/img/item/"+itemObject[0]+".png"
+              return(
+                <li key={itemObject[0]}>
+                  <div className="chartItemContainer">
+                  <img className="itemImage" src={imgSrc} alt="itemPicture" />
+                  {/*{itemObject[0]}: {itemObject[1]}
+                  <ul>
+                    {Object.entries(itemObject[2]).map((itemStats, subIndex) => {
+                      console.log(itemStats)
+                      return(
+                        <li key={subIndex}>
+                          {itemStats[0]}: {itemStats[1]}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  */}
+                  </div>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </div>
+      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+      </div>
+      <ListItem value="test" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something  great.</p>
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-      </div>
-      <Chart />
-      <ul>
-        {Object.values(itemData).map((itemObject, index) => {
-          return(
-            <li key={index}>
-              {itemObject[0]}
-              <ul>
-                {Object.entries(itemObject[1]).map((itemStats, subIndex) => {
-                  console.log(itemStats)
-                  return(
-                    <li key={subIndex}>
-                      {itemStats[0]}: {itemStats[1]}
-                    </li>
-                  )
-                })}
-              </ul>
-            </li>
-          )
-        })}
-      </ul>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
         <Image />
       </div>
       <Link to="/page-2/">Go to page 2</Link>

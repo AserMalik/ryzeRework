@@ -49,7 +49,9 @@ class Chart extends React.Component {
   }
 
   render() {
-    return <Line data={this.state} />;
+    return <Line
+      data={this.state}
+      />
   }
 }
 
