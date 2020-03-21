@@ -1,19 +1,13 @@
-import React, { Component } from "react"
+import React from "react"
 
-class ListItem extends Component {
-    constructor(props) {
-        super(props);
-        this.value = "Testing"
-      }
-
+class ListItem extends React.Component {
     render () {
         return (
-            <div>
-                <p>{this.props.value}</p>
-                <p>{this.value}</p>
+            <div className="itemContainer">
+                <img className="itemImage" src={this.props.imgLink} alt="itemPicture" />
             </div>
         )
-    }
+    } 
 }
 
 export default ListItem;

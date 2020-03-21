@@ -32,35 +32,54 @@ li img:hover {
 box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
 }
 
-ul ul {
-    float: left;
-    width: fit-content;
+.rootContainer {
+    border: solid black 3px;
+    height: 61vh;
 }
 
-.chartRoot {
-    border: solid black 5px;
-    display: inline-block;
-    height: 51vh;
-}
-
-.chartItemListContainer {
-    width: 38%;
-    float: left;
+.rootItems {
+    width: 39.5%;
     height: 100%;
+    display: grid;
+    float: left;
+    border: solid red 3px;
+}
+
+.itemsList {
+    border: solid blue 3px;
+}
+
+#itemsListCatalogue {
     overflow-y: scroll;
 }
 
-.chartContainer {
+#itemsListInventory {
+    display: table;
+    column-count: 6;
+    column-rule: 1px solid black;
+    width: max-content;
+}
+
+#itemsListInventory:nth-child(n) {
+    display: table-cell;
+    width: 100%;
+}
+
+.rootChart {
     float: right;
-    width: 62%;
+    width: 60.5%;
     height: max-content;
 }
 
-.chartItemContainer:hover {
+.itemContainer {
+    display: table-row;
+}
+
+.itemContainer:hover {
     background-color: lightsalmon;
 }
 
-.chartItemContainer:checked {
+.itemContainer:checked {
     background-color: lightseagreen;
 }
 
@@ -71,8 +90,4 @@ ul ul {
 
 .item:active {
     background: grey;
-}
-
-.chart {
-    float: right;
 }

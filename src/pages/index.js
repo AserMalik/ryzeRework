@@ -1,62 +1,20 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 //zingcharts, dygraph, react-chartjs, highcharts, or chartist
 //sortable and shuffle js
 
-import Layout from "../components/layout"
-import Image from "../components/image"
+import Layout from "../components/Layout"
+import Image from "../components/Image"
 import SEO from "../components/seo"
-import Chart from "../components/chart"
-import ListItem from "../components/listitem"
+import App from "../components/App"
 
 const IndexPage = () => {
-  //https://localhost:8080/ping
-  const [itemData, setItemData] = useState(0)
-  useEffect( () => {
-    fetch(`https://itemcheck.herokuapp.com/ping`)
-    .then(response => response.json()) // parse JSON from request
-    .then(resultData => {
-      setItemData(resultData)
-    })
-  }, []) 
-  
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="chartRoot">
-        <div className="chartContainer">
-          <Chart className="chart" />
-        </div>
-        <div className="chartItemListContainer">
-          <ul>
-            {Object.values(itemData).map(itemObject => {
-              var imgSrc = "https://ddragon.leagueoflegends.com/cdn/10.5.1/img/item/"+itemObject[0]+".png"
-              return(
-                <li key={itemObject[0]}>
-                  <div className="chartItemContainer">
-                  <img className="itemImage" src={imgSrc} alt="itemPicture" />
-                  {/*{itemObject[0]}: {itemObject[1]}
-                  <ul>
-                    {Object.entries(itemObject[2]).map((itemStats, subIndex) => {
-                      console.log(itemStats)
-                      return(
-                        <li key={subIndex}>
-                          {itemStats[0]}: {itemStats[1]}
-                        </li>
-                      )
-                    })}
-                  </ul>
-                  */}
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </div>
+      <App />
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       </div>
-      <ListItem value="test" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something  great.</p>
