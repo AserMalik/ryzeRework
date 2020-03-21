@@ -7,7 +7,13 @@ class App extends React.Component {
     super();
 
     this.state = {
-      itemsMasterObject: []
+      itemsMasterObject: [],
+      itemInventorySlot1: [],
+      itemInventorySlot2: [],
+      itemInventorySlot3: [],
+      itemInventorySlot4: [],
+      itemInventorySlot5: [],
+      itemInventorySlot6: []
       /*dataset object goes here*/
     };
   }
@@ -15,12 +21,11 @@ class App extends React.Component {
   componentDidMount() {
     fetch(`http://localhost:8080/ping`)
     .then(response => response.json()) // parse JSON from request
-    .then(resultData => {
+    .then(responseData => {
       this.setState({
-        itemsMasterObject: resultData
+        itemsMasterObject: responseData
       });
     })
-    console.log(this.props.itemsData);
   }
 
   render() {
@@ -32,7 +37,7 @@ class App extends React.Component {
       <div className="rootContainer">
         <div className="rootItems">
           <div className="itemsList" id="itemsListCatalogue">
-            <ul>
+            {/*<ul>
               {Object.values(this.state.itemsMasterObject).map(itemObject => {
                 var imgSrc = "https://ddragon.leagueoflegends.com/cdn/10.5.1/img/item/"+itemObject[0]+".png"
                 return(
@@ -41,15 +46,22 @@ class App extends React.Component {
                   </li>
                 )
               })}
-            </ul>
+
+            </ul>*/}
+            {Object.values(this.state.itemsMasterObject).map((itemObject, index) => {
+                var imgSrc = "https://ddragon.leagueoflegends.com/cdn/10.5.1/img/item/"+itemObject[0]+".png"
+                return(
+                    <ListItem imgLink={imgSrc} key={index} onclick={() => this.activateLasers} />
+                )
+              })}
           </div>
           <div className="itemsList" id="itemsListInventory">
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
+            <div>{this.state.itemInventorySlot1}</div>
+            <div>{this.state.itemInventorySlot2}</div>
+            <div>{this.state.itemInventorySlot3}</div>
+            <div>{this.state.itemInventorySlot4}</div>
+            <div>{this.state.itemInventorySlot5}</div>
+            <div>{this.state.itemInventorySlot6}</div>
           </div>
         </div>
         <div className="rootChart">
