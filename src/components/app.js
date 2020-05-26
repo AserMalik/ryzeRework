@@ -113,7 +113,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:8080/ping`)
+    fetch(`https://itemcheck.herokuapp.com/ping`)
     .then(response => response.json())
     .then(responseData => {
       this.setState({
