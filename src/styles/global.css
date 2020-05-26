@@ -73,11 +73,6 @@ box-shadow: 0px 0px 7px rgba(255,255,255,0.9);
     grid-row-gap: 5px;
 }
 
-#itemsListInventory * {
-    margin: 0px;
-    border: solid rgb(0, 134, 29) 3px;
-}
-
 .itemContainer {
     display: inline-grid;
     justify-self: center;
