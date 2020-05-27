@@ -17,7 +17,9 @@ const IndexPage = () => {
       <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       </div>
       <h1>Hi people</h1>
-
+     
+      <h2>If you do not see a scrollable grid and table above this, please wait up to 30 seconds and then reload this page. This will allow the Heroku free dyno to complete a cold start.</h2>
+    
       <h3>Disclaimer</h3>
       <p>This is a prototype of a LoL item damage calculator. Currently this website is only pulling from an Express backend that in turn contacts Riot's API to retrieve item data from the latest patch. This backend is currently hosted on a free Heroku dyno. The 'calculator' is currently incomplete as the graph does not reflect the selections made by the user.</p>
       
